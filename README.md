@@ -79,9 +79,10 @@ Ayrıca Station Wagon ve Micro sınıfları için Bing Image Search API ve Robof
 
 ### Adımlar
 
-1. Proje dizinine gidin:
+1. Repoyu klonlayın ve proje dizinine gidin:
    ```bash
-   cd car-body-classification
+   git clone https://github.com/zvsolmaz/car_body_classification.git
+   cd car_body_classification
    ```
 
 2. Gerekli kütüphaneleri yükleyin:
@@ -89,14 +90,32 @@ Ayrıca Station Wagon ve Micro sınıfları için Bing Image Search API ve Robof
    pip install -r requirements.txt
    ```
 
-3. Eğitilmiş model ağırlıklarını ilgili dizine yerleştirin (`models/` veya proje yapılandırmasında belirtilen konum).
+3. Eğitilmiş model ağırlıkları repoda hazır olarak bulunur (`models/best_model.pth`). Modeli kendiniz eğitmek isterseniz:
+   ```bash
+   python src/train.py
+   ```
 
 4. Streamlit uygulamasını başlatın:
    ```bash
-   streamlit run app.py
+   streamlit run app/app.py
    ```
 
 5. Tarayıcıda açılan arayüzden bir araç görüntüsü yükleyerek gövde tipi tahminini ve güven skorunu görüntüleyin.
+
+## 📁 Proje Yapısı
+
+```
+car_body_classification/
+├── app/app.py              # Streamlit web arayüzü
+├── src/
+│   ├── config.py           # Yol ve hiperparametre ayarları
+│   ├── dataset.py          # Veri yükleme ve augmentation
+│   ├── train.py            # Model eğitimi
+│   └── predict.py          # Tekli tahmin
+├── models/best_model.pth   # Eğitilmiş EfficientNet-B2 ağırlıkları
+├── results_*/              # Sınıflandırma raporu
+└── images/                 # Ekran görüntüleri
+```
 
 ## 📚 Kaynak
 
@@ -106,7 +125,7 @@ Bu proje, "Araba Gövde Tipi Sınıflandırma: EfficientNet-B2 Tabanlı Derin Ö
 
 # Car Body Type Classification (EfficientNet-B2)
 
-This project is a deep learning system that automatically classifies vehicle images into **8 different body types** (SUV, Van, Station Wagon, Micro, Convertible/Open-Wheel, Sedan, Hatchback, Pick-Up). The model is built on the **EfficientNet-B2** architecture, fine-tuned using a two-phase transfer learning strategy, and deployed through a **Streamlit**-based web interface for real-time prediction.
+This project is a deep learning system that automatically classifies vehicle images into **8 different body types** (SUV, Van, Station Wagon, Micro, Open-Wheel, Sedan, Hatchback, Pick-Up). The model is built on the **EfficientNet-B2** architecture, fine-tuned using a two-phase transfer learning strategy, and deployed through a **Streamlit**-based web interface for real-time prediction.
 
 ## 📊 Screenshots
 
@@ -185,9 +204,10 @@ Additional images for the Station Wagon and Micro classes were collected via the
 
 ### Steps
 
-1. Navigate to the project directory:
+1. Clone the repository and navigate to the project directory:
    ```bash
-   cd car-body-classification
+   git clone https://github.com/zvsolmaz/car_body_classification.git
+   cd car_body_classification
    ```
 
 2. Install the dependencies:
@@ -195,14 +215,32 @@ Additional images for the Station Wagon and Micro classes were collected via the
    pip install -r requirements.txt
    ```
 
-3. Place the trained model weights in the appropriate directory (e.g., `models/`, or as configured in the project).
+3. The trained model weights are included in the repo (`models/best_model.pth`). To train the model yourself:
+   ```bash
+   python src/train.py
+   ```
 
 4. Launch the Streamlit application:
    ```bash
-   streamlit run app.py
+   streamlit run app/app.py
    ```
 
 5. Upload a vehicle image in the browser interface to view the predicted body type and confidence score.
+
+## 📁 Project Structure
+
+```
+car_body_classification/
+├── app/app.py              # Streamlit web interface
+├── src/
+│   ├── config.py           # Paths and hyperparameters
+│   ├── dataset.py          # Data loading and augmentation
+│   ├── train.py            # Model training
+│   └── predict.py          # Single-image prediction
+├── models/best_model.pth   # Trained EfficientNet-B2 weights
+├── results_*/              # Classification report
+└── images/                 # Screenshots
+```
 
 ## 📚 Reference
 
